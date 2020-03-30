@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <title>LOGIN TO PORCEED</title>
+    <link rel="icon" class="img-circle" href="https://4.bp.blogspot.com/-89kU_HhERi4/UnunyBhFe6I/AAAAAAAABR0/hFaRla60qOc/s1600/944589_598718430195139_1373481663_n.jpg" type="image/gif" sizes="16x16">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+ <link href="../static/css/jumbotron-narrow.css" rel="stylesheet">
+
+ <style type="text/css">
+  .jumbotron
+    {
+       margin-top: 20px;
+       background-image: url("https://digitalsynopsis.com/wp-content/uploads/2017/07/beautiful-color-ui-gradients-backgrounds-sexy-blue.png");
+       background-size: cover;
+       color: black;
+    }
+
+
+
+ </style>
+
+</head>
+
+
+  <body  background="https://hookagency.com/wp-content/uploads/2015/11/green-to-blue-ui-gradient-background.jpg">
+
+   <p class="lead"></p>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">HOME</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/about">About</a></li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+    <div class="jumbotron jumbotron-fluid container text-center">
+      <h1>Please login</h1>
+      <br>
+      <form action="" method="post">
+        <input type="text" placeholder="Username" name="username" value="{{
+          request.form.username }}"> <br><br>
+         <input type="password" placeholder="Password" name="password" value="{{
+          request.form.password }}"> <br><br>
+        <input class="btn btn-default " type="submit" value="Login">
+      </form>
+      {% if error %}
+        <p class="error"><strong>Error:</strong> {{ error }}
+      {% endif %}
+    </div>
+
+
+  </body>
+</html>
