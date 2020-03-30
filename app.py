@@ -2,14 +2,13 @@ from flask import Flask, render_template,redirect, url_for, request
 import random
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = "cross-path-alert"
 
 @app.route("/")
-
-def main():
+def index():
     return render_template('index.html')
 
 @app.route('/login', methods=['GET', 'POST'])           #login part can be done better
-
 def login():
     error = None
     if request.method == 'POST':
@@ -23,8 +22,6 @@ def login():
 @app.route("/about")
 def about():
    return render_template('about.html')
-
-
 
 
 if __name__ == "__main__":
