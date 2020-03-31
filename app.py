@@ -9,9 +9,9 @@ app.config['SECRET_KEY'] = "cross-path-alert"
 def home():
 	return render_template('home.html')
 
-@app.route('/login')
+@app.route('/login/')
 def login():
-    return (<h1>under construction</h1>)
+    return render_template('login.html')
 
 @app.route("/about")
 def about():
