@@ -14,7 +14,7 @@ def index():
 
 @app.route('/login', methods=['GET', 'POST'])           # login part can be done better
 def login():
-    
+
     error = ''
     if request.method == 'POST':
         if request.form['username'] != 'admin' or request.form['password'] != 'admin':
@@ -22,7 +22,6 @@ def login():
         else:
             return redirect(url_for('about'))
     return render_template('login.html', error=error)
->>>>>>> 730d7dc64b5aa1bca9fc7edbaaacf629c5404128
 
 @app.route("/about")
 def about():
