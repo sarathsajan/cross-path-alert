@@ -16,6 +16,10 @@ def home():
 def login():
     return render_template('login.html', data=database)
 
+@app.route("/signup")
+def signup():
+    return render_template('signup.html')
+
 @app.route("/about")
 def about():
     return render_template('about.html')
