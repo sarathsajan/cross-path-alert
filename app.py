@@ -12,9 +12,13 @@ database = database()
 def home():
 	return render_template('home.html')
 
-@app.route('/login/')
+@app.route('/login')
 def login():
     return ('login.html', data=database)
+
+@app.route('/signup')
+def login():
+    return ('signup.html')
 
 @app.route("/about")
 def about():
