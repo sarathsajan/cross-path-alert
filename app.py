@@ -14,13 +14,13 @@ def index():
 
 @app.route('/login', methods=['GET', 'POST'])           # login part can be done better
 def login():
-	error = ''	# Bad practice to initialize a vairable with None...
-	if request.method == 'POST':
-		if request.form['username'] != 'admin' or request.form['password'] != 'admin':
-			error = 'Invalid Credentials. Please try again.'
-		else:
-			return redirect(url_for('one'))
-	return render_template('login.html', error=error)
+    error = ''
+    if request.method == 'POST':
+        if request.form['username'] != 'admin' or request.form['password'] != 'admin':
+            error = 'Invalid Credentials. Please try again.'
+        else:
+            return redirect(url_for('about'))
+    return render_template('login.html', error=error)
 
 @app.route("/about")
 def about():
