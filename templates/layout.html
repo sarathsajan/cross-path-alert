@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html>
+
     <head>
+        <style>
+        #grad1 {
+        height: 200px;
+        background-color: red; /* For browsers that do not support gradients */
+        background-image: linear-gradient(to bottom, red , yellow); /* Standard syntax (must be last) */
+        }
+        </style>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,intial-scale=1.0">
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -8,7 +16,7 @@
         <title>Cross Path Alert</title>
     </head>
 
-    <body>
+    <body id="gard1">
         {% include 'includes/_navbar.html' %}
         <div class="container">
             {% block body %}
