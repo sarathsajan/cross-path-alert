@@ -1,79 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>ARE YOU SAFE?</title>
-    <link rel="icon" class="img-circle" href="https://4.bp.blogspot.com/-89kU_HhERi4/UnunyBhFe6I/AAAAAAAABR0/hFaRla60qOc/s1600/944589_598718430195139_1373481663_n.jpg" type="image/gif" sizes="16x16">
-    <meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-	<link href="../static/css/jumbotron-narrow.css" rel="stylesheet">
-	<style type="text/css">
-		.jumbotron {
-			margin-top: 20px;
-			background-image: url("https://digitalsynopsis.com/wp-content/uploads/2017/07/beautiful-color-ui-gradients-backgrounds-sexy-blue.png");
-			background-size: cover;
-			color: white;
-		}
-		#butwhy {
-			color: #d6cccb;
-		}
-		#white {
-			color: #FFFFFF;
-		}
-		.btn {
-			color: #ffffff;
-			background-color: transparent;
-			border: 1px solid #FFFFFF;
-		}
-		.video-container {
-			position: relative;
-			padding-bottom: 56.25%;
-			padding-top: 30px;
-			height: 0;
-			overflow: hidden;
-		}
-		.video-container iframe,
-		.video-container object,
-		.video-container embed {
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 50%;
-		}
-	</style>
-</head>
-<body  background="https://hookagency.com/wp-content/uploads/2015/11/green-to-blue-ui-gradient-background.jpg">
-	<p class="lead"></p>
-	<nav class="navbar navbar-inverse">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="/">HOME</a>
-			</div>
-			<div class="collapse navbar-collapse" id="myNavbar">
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="/about">About</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
-	<div class="jumbotron center text-center">
-		<h1>CROSS PATH ALERT SYSTEM</h1>
-		<h2>Developed by</h2>
-		<p><a href='https://github.com/sarathsajan'>SARATH SAJAN</a></p>
-		<p><a href='https://github.com/bestin-07'>BESTIN ANTU</a></p>
-		<p><a href='#'>VAISAKH SUNIL KUMAR</a></p>
-		<p><a href='#'>AARYA</a></p>
+{% extends 'layout.html' %}
+{% block body %}
+	<br>
+	<div class="jumbotron text-center">
+		<h1>CrossPath System</h1>
+		<p style="color: red">[currently under development]</p>
 	</div>
-    <div id="white" class="text-center" style="margin-bottom:0">
-		<p>&copy; go_corona_go</p>
+	<br>
+	<br>
+	<div class="text-center">
+		<h5>Developed by</h5>
+		<p><a href='https://github.com/sarathsajan'>Sarath Sajan</a></p>
+		<p><a href='https://github.com/bestin-07'>Bestin Antu</a></p>
+		<p>Vaisakh Sunil Kumar</p>
+		<p>Aarya</p>
 	</div>
-</body>
-</html>
+{% endblock %}
