@@ -11,7 +11,7 @@ def home():
 
 @app.route('/login/')
 def login():
-    return_render_template('login.html')
+    return ('<h3>Login Page Under Construction</h3>')
 
 @app.route("/about")
 def about():
