@@ -14,7 +14,7 @@ def home():
 
 @app.route('/login/')
 def login():
-    return ('login.html', data=database)
+    return render_template('login.html', data=database)
 
 @app.route("/about")
 def about():
