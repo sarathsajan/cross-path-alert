@@ -91,9 +91,3 @@ patients = [
             ]
 def database():
     return patients
-
-wojo = database()
-print len(wojo)
-
-for i in range(len(wojo)):
-    print wojo[i]
