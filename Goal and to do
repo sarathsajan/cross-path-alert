@@ -18,3 +18,11 @@ or if hew gets a flag later he should be alerted by email and next time he login
 
 can update donotreply reminder emails like "do you have cough fever etc etc" for the flagged users and suggest him to 'visit
 nearest health center if things are not good' as the webapp progress
+
+
+
+**TO DO**
+
+collect patient data
+design and set up otp login and profile html and database for userdetails and his search history of travels
+matching algorithm
