@@ -14,7 +14,7 @@ def home():
 
 @app.route('/login')
 def login():
-    return render_template('login.html', data=database)
+    return render_template('login.html')
 
 @app.route('/signup')
 def signup():
@@ -23,6 +23,6 @@ def signup():
 @app.route("/about")
 def about():
     return render_template('about.html')
-
+  
 if __name__ == "__main__":
     app.run(debug=True)    # Remember to remove debug=True in production
