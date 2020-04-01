@@ -1,5 +1,5 @@
 import random
-import data.py
+from data import database
 from flask import Flask, render_template, redirect, url_for, request
 # A more formal packaging needed... with __init__.py as the development grows.
 
@@ -17,7 +17,7 @@ def login():
     return render_template('login.html', data=database)
 
 @app.route('/signup')
-def login():
+def signup():
     return render_template('signup.html')
 
 @app.route("/about")

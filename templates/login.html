@@ -3,9 +3,17 @@
     <h3>Login Page Under Construction</h3>
     <br>
     <h5>should the database schema be like this? If not suggest by going to issues in the github repo</h5>
-    <ul>
-        {% for i in range (len(database)) %}
-            <li class="list-group-item">{{ database[i] }}</li>
-        {% end for %}
-    </ul>
+    {% for patient in data %}
+        <ul>
+            <li class="list-group-item">Patient ID      :   {{ patient.patient_id }}</li>
+            <li class="list-group-item">Patient result  :   {{ patient.result }}</li>
+            <li class="list-group-item">Patient e-mail  :   {{ patient.patient_email }}</li>
+            Travel History :
+            <ul>
+                {% for location in patient.travel_history %}
+                    <li class="list-group-item">{{ location }}</li>
+                {% endfor %}
+            </ul>
+        </ul>
+    {% endfor %}
 {% endblock %}
