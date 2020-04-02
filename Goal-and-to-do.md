@@ -1,5 +1,8 @@
-When the user uses the website for the first time, his primary focus should be on the ' register and check your safety ' container where he 
-can see the form for providing email
+When the user uses the website for the first time, he should see three neat form with option to enter travel place [in coordinates for start can switch to maps 
+in future] travel date and travel time
+can search 
+
+a new intermediate page to register/login/skip email is shown
 
 after providing email he will recieve a otp confirmation and an new page with form to 'enter otp' is displayed
 
