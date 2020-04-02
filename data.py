@@ -8,7 +8,7 @@ patients = [
                     'travel_history' :[
                                         {
                                             'date' : '2020-03-01',
-                                            'time' : '13-15',
+                                            'time' : '01-15',
                                             'location' : '10.5276N, 76.2144E'
                                         }
                                     ]

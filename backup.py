@@ -1,5 +1,5 @@
 app = Flask(__name__)
-app.config['SECRET_KEY'] = "cross-path-alert"
+app.config['SECRET_KEY'] = "cross-path-alert"   #This is nothin but the flask backup
 
 database = database()
 

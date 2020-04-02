@@ -5,8 +5,8 @@ users = [
                     'travel_history' :[
                                         {
                                             'date' : '2020-03-01',
-                                            'time' : '13-15',
-                                            'location' : '10.5276N, 76.2144E'
+                                            'time' : '7-15',
+                                            'location' : '10.5206N, 76.2140E'
                                         }
                                     ]
                 },
@@ -26,9 +26,9 @@ users = [
                     'password'   :  'pass',
                     'travel_history' :[
                                         {
-                                            'date' : '2020-03-02',
-                                            'time' : '17-30',
-                                            'location' : '19.2183N, 72.9781E'
+                                           'date' : '2020-03-01',
+                                            'time' : '13-15',
+                                            'location' : '10.5276N, 76.2144E',
                                         },
                                         {
                                             'date' : '2020-03-01',
