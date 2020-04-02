@@ -1,6 +1,7 @@
-patients = [
+users = [
                 {
                     'user_email' : 'bbbbbb@example.com',
+                    'password'   :  'pass',
                     'travel_history' :[
                                         {
                                             'date' : '2020-03-01',
@@ -11,6 +12,7 @@ patients = [
                 },
                 {
                     'user_email' : 'cccccc@world.com',
+                    'password'   :  'pass',
                     'travel_history' :[
                                         {
                                             'date' : '2020-03-01',
@@ -20,68 +22,23 @@ patients = [
                                     ]
                 },
                 {
-                    'patient_id' : 2,
-                    'result' : 'positive',
-                    'patient_email' : 'cure@china.com',
+                    'user_email' : 'dddddd@china.com',
+                    'password'   :  'pass',
                     'travel_history' :[
                                         {
                                             'date' : '2020-03-02',
                                             'time' : '17-30',
-                                            'location' : '10.2544N, 76.3681E'
-                                        }
-                                    ]
-                },
-                {
-                    'patient_id' : 3,
-                    'result' : 'positive',
-                    'patient_email' : 'india@lockdown.com',
-                    'travel_history' :[
-                                        {
-                                            'date' : '2020-03-01',
-                                            'time' : '11-00',
-                                            'location' : '19.0760N, 72.8777E'
-                                        },
-                                        {
-                                            'date' : '2020-03-02',
-                                            'time' : '11-45',
-                                            'location' : '19.0760N, 72.8777E'
-                                        },
-                                        {
-                                            'date' : '2020-03-02',
-                                            'time' : '18-10',
                                             'location' : '19.2183N, 72.9781E'
-                                        }
-                                    ]
-                },
-                {
-                    'patient_id' : 4,
-                    'result' : 'negative',
-                    'patient_email' : 'italy@paralokam.com',
-                    'travel_history' :[
-                                        {
-                                            'date' : '2020-03-01',
-                                            'time' : '17-00',
-                                            'location' : '28.7041N, 77.1025E'
                                         },
                                         {
                                             'date' : '2020-03-01',
-                                            'time' : '19-25',
+                                            'time' : '17-25',
                                             'location' : '27.1751N, 78.0421E'
                                         }
                                     ]
-                },
-                {
-                    'patient_id' : 5,
-                    'result' : 'negative',
-                    'patient_email' : 'me@home.com',
-                    'travel_history' :[
-                                        {
-                                            'date' : '2020-03-02',
-                                            'time' : '08-00',
-                                            'location' : '9.9312N, 76.2673E'
-                                        }
-                                    ]
                 }
+                
+                
             ]
-def database():
-    return patients
+def userdetails():
+    return users
