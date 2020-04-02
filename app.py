@@ -1,5 +1,7 @@
 import random
 from data import database
+from passlib.hash import sha256_crypt
+from wtforms import Form, StringField, TextAreaField, PasswordField, validators
 from flask import Flask, render_template, redirect, url_for, request
 # A more formal packaging needed... with __init__.py as the development grows.
 
@@ -16,11 +18,23 @@ def home():
 def login():
     return render_template('login.html')
 
-@app.route('/signup')
-def signup():
-    return render_template('signup.html')
+class RegisterForm(Form):
+    name = StringField('Name', [validators.Length(min=2, max=50)])
+    email = StringField('Email', [validators.Length(min=6, max=50)])
+    password = PasswordField('Password', [
+            validators.DataRequired(),
+            validators.EqualTo('confirm', message='Passwords do not match')
+        ])
+    confirm = PasswordField('Confirm Password')
 
-@app.route("/about")
+@app.route('/signup/', methods=['POST', 'GET'])
+def signup():
+    form = RegisterForm(request.form)
+    if request.method == 'POST' and form.validate():
+        render_template('signup.html', form=form)
+    return render_template('signup.html', form=form)
+
+@app.route("/about/")
 def about():
     return render_template('about.html')
   

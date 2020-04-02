@@ -1,60 +1,31 @@
 {% extends 'layout.html' %}
 {% block body %}
-<div class="container" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2"> 
+{% from "includes/_formhelpers.html" import render_field %}
+<br>
+<h3><strong>Sign Up</strong></h3>
+<div class="container" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
     <div class="panel panel-info">
         <div class="panel-body" >
-            <form id="signupform" class="form-horizontal" role="form">
-                                
-                <div id="signupalert" style="display:none" class="alert alert-danger">
-                    <p>Error:</p>
-                    <span></span>
+            <form method="POST" action="" id="signupform" class="form-horizontal" role="form">
+
+                <div class="form-group">
+                    {{ render_field(form.name, class_="form-control") }}
                 </div>
 
                 <div class="form-group">
-                    <label for="email" class="col-md-3 control-label">Email</label>
-                    <div class="col-md-9">
-                        <input type="text" class="form-control" name="email" placeholder="Email Address">
-                    </div>
+                    {{ render_field(form.email, class_="form-control") }}
                 </div>
 
                 <div class="form-group">
-                    <label for="firstname" class="col-md-3 control-label">First Name</label>
-                    <div class="col-md-9">
-                        <input type="text" class="form-control" name="firstname" placeholder="First Name">
-                    </div>
+                    {{ render_field(form.password, class_="form-control") }}
                 </div>
 
                 <div class="form-group">
-                    <label for="lastname" class="col-md-3 control-label">Last Name</label>
-                    <div class="col-md-9">
-                        <input type="text" class="form-control" name="lastname" placeholder="Last Name">
-                    </div>
+                    {{ render_field(form.confirm, class_="form-control") }}
                 </div>
 
-                <div class="form-group">
-                    <label for="password" class="col-md-3 control-label">Password</label>
-                    <div class="col-md-9">
-                        <input type="password" class="form-control" name="passwd" placeholder="Password">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="password" class="col-md-3 control-label">Confirm Password</label>
-                    <div class="col-md-9">
-                        <input type="password" class="form-control" name="passwd" placeholder="Retype Password">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <!-- Button --> 
-                    <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%">                                            
-                        <div class="col-md-offset-3 col-md-9">
-                            <a id="btn-signup" href="#" class="btn btn-success">SignUp  </a>
-                            <span style="margin-left:8px;">or</span> 
-                            <a id="signinlink" href= "/login"> &nbsp;Sign in </a> 
-                        </div>
-                    </div>
-                </div>                                                                           
+                <p><input type="submit" class="btn btn-primary" value="Submit"></p>
+                
             </form>
         </div>
     </div>                   
