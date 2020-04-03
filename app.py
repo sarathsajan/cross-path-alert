@@ -111,7 +111,7 @@ def for_user_with_account(useremail,password):
 				utime=y['travel_history'][z]['time']                 
 				checkyear,checkmonth,checkdate=udate.split('-')
 				checkhour,checkminutes=utime.split('-')
-				val1 = datetime(int(checkyear),int(checkmonth),int(checkdate),int(checkhour),int(checkminutes),00) # if the person has no account
+				val1 = datetime(int(checkyear),int(checkmonth),int(checkdate),int(checkhour),int(checkminutes),00) 
 					
 				#thistime = datetime.now()              # TO POP DATA LARGER THAN 28 DAYS
 				#checkdiff = thistime-val1
