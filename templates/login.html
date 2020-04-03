@@ -1,31 +1,25 @@
 {% extends 'layout.html' %}
 {% block body %}
+{% from "includes/_formhelpers.html" import render_field %}
 <br>
 <h3><strong>Log In</strong></h3>
 <div class="container">
     <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
         <div class="panel panel-info" >
             <div class="panel-heading">
-                <div style="float:right; font-size: 80%; position: relative; top:-10px">
-                    <a href="#">Forgot password?</a>
-                </div>
-                <div style="padding-top:30px" class="panel-body">
-                    <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
-                    <form id="loginform" class="form-horizontal" role="form">
-                        <div style="margin-bottom: 25px" class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                            <input id="login-username" type="text" class="form-control" name="username" value="" placeholder="your registered email">
+                <div class="panel-body">
+                    <form id="loginform" method="POST" action="" class="form-horizontal" role="form">
+
+                        <div class="form-group">
+                            {{ render_field(form.email, class_="form-control") }}
                         </div>
-                        <div style="margin-bottom: 25px" class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                            <input id="login-password" type="password" class="form-control" name="password" placeholder="password">
+
+                        <div class="form-group">
+                            {{ render_field(form.password, class_="form-control") }}
                         </div>
-                        <div style="margin-top:10px" class="form-group">
-                            <!-- Button -->
-                            <div class="col-sm-12 controls">
-                                <a id="btn-login" href="#" class="btn btn-success">Login  </a>
-                            </div>
-                        </div>
+
+                        <p><input type="submit" class="btn btn-primary" value="Log in"></p>
+
                         <div style="margin-top:10px" class="form-group">
                             <div class="col-md-12 control">
                                 <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
