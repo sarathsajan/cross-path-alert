@@ -96,8 +96,10 @@ def login():
         else:
             error = "No user with that E-mail ID"
             return render_template("login.html", form=form, error=error)
-
-    return render_template('login.html', form=form)
+	
+	cur.close()
+	return render_template("login.html", form=form)
+    return render_template("login.html", form=form)
 
 
 
