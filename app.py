@@ -1,8 +1,9 @@
 import random
+from functools import wraps
 from passlib.hash import sha256_crypt
 from flask_mysqldb import MySQL
 from wtforms import Form, StringField, TextAreaField, PasswordField, validators
-from flask import Flask, render_template, redirect, url_for, request, flash, logging
+from flask import Flask, render_template, redirect, url_for, request, flash, session
 # A more formal packaging needed... with __init__.py as the development grows.
 
 app = Flask(__name__)
@@ -26,6 +27,21 @@ def home():
 
 
 
+@app.route("/about/")
+def about():
+    return render_template('about.html')
+
+def is_logged_in(f):
+    @wraps(f)
+    def wrap(*args, **kwargs):
+        if 'logged_in' in session:
+            return f(*args, **kwargs)
+        else:
+            flash("Unauthorised, please log in", 'danger')
+            return redirect(url_for('login'))
+    return wrap
+
+
 ###################################### primary register form ########################
 class RegisterForm(Form):                                                           #
     name = StringField('Name', [validators.Length(min=2, max=50)])                  #
@@ -47,6 +63,12 @@ def signup():
 
         # Create a connection and initialise a cursor to interface flask, python and mysql
         cur = mysql.connection.cursor()
+
+        # Check if that email is already taken
+        result = cur.execute("SELECT * FROM users WHERE email = %s", [email])
+        if result > 0:
+            error = "Email already taken"
+            return render_template("signup.html", form=form, error=error)
 
         # Execute mysql commands
         cur.execute("INSERT INTO users(name, email, password) VALUES(%s, %s, %s)", (name, email, password))
@@ -89,23 +111,36 @@ def login():
             password = data['password']
             if sha256_crypt.verify(candidate_password, password):
                 flash("You are now logged in", 'success')
-                return redirect(url_for('home'))
+                session['logged_in'] = True
+                session['email'] = data['email']
+                session['name'] = data['name']
+
+                return redirect(url_for('dashboard'))
             else:
                 error = "Invalid Password"
                 return render_template("login.html", form=form, error=error)
         else:
             error = "No user with that E-mail ID"
             return render_template("login.html", form=form, error=error)
-	
-	cur.close()
-	return render_template("login.html", form=form)
+        cur.close()
     return render_template("login.html", form=form)
 
 
 
-@app.route("/about/")
-def about():
-    return render_template('about.html')
+@app.route("/dashboard/")
+@is_logged_in
+def dashboard():
+    return render_template('dashboard.html')
+
+
+
+@app.route("/logout/")
+def logout():
+    session.clear()
+    flash("You are now logged out", 'success')
+    return redirect(url_for('login'))
+
+
   
 if __name__ == "__main__":
     app.run(debug=True)    # Remember to remove debug=True in production
