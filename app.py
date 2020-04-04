@@ -122,6 +122,7 @@ def login():
             error = "No user with that E-mail ID"
             return render_template("login.html", form=form, error=error)
         cur.close()
+    session.clear()    
     return render_template("login.html", form=form)
 
 

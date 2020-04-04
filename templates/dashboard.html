@@ -1,6 +1,8 @@
 {% extends 'layout.html' %}
 {% block body %}
-    <h1>Dashboard</h1>
-    <h3>Welcome, <small>{{ session.name }}</small></h3>
-    {% include 'includes/_map.html' %}
+    	<h1>Dashboard</h1>
+    	<h3>Welcome</h3>
+    	{% include 'includes/_map.html' %}
+    	{% include 'includes/_geoloc.html' %}
+
 {% endblock %}
