@@ -8,19 +8,13 @@ from flask import Flask, render_template, redirect, url_for, request
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "cross-path-alert"
-database = database()
-userdata = userdetails()
+
+database = database()           #change this with the userdata from sql
+userdata = userdetails()        #and this with patients data from sql
 
 ######################################### temporary data for testing ################################
 useremail="dddddd@china.com"  #email from the login form 
 password='pass'               #password from the login form 
-userdate=1
-useryear=2020                 #  if the user is having account first remember to add the searched travel  
-usermonth=3                   #  data to his travel database and just call the function  
-usertimehour=1                #  for_user_with_account by passing username and password if user has 
-usertimeminutes=12            #  no account just call the function for_user_with_no_account by simply 
-userlatitude=10.5279          #  passing all the values entered by the user and enjoyy
-userlongtitude=76.2155
 ####################################################################################################
 
 
@@ -130,7 +124,8 @@ def for_user_with_account(useremail,password):
 #####################################################################################################
 
 for_user_with_account(useremail,password)		 #call for users with account
+
+#################################################### PHASE 2 ########################################
 #for_user_with_no_account(useryear,usermonth,userdate,usertimehour,usertimeminutes,userlatitude,userlongtitude) # call for users with no account
 
-# if atleast once danger is coming, it should be flagged
 
