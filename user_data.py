@@ -1,44 +1,42 @@
 users = [
                 {
-                    'user_email' : 'bbbbbb@example.com',
+                    'email' : 'bbbbbb@example.com',
                     'password'   :  'pass',
-                    'travel_history' :[
-                                        {
-                                            'date' : '2020-03-01',
-                                            'time' : '7-15',
-                                            'location' : '10.5206N, 76.2140E'
-                                        }
-                                    ]
+                    'date' : '2020-03-01',
+                    'time' : '15-00',
+                    'latitude' : '10.5206N',
+                    'longitude' : '76.2140E',
+                    'flag'  : '0'
                 },
                 {
-                    'user_email' : 'cccccc@world.com',
+                    'email' : 'cccccc@world.com',
                     'password'   :  'pass',
-                    'travel_history' :[
-                                        {
-                                            'date' : '2020-03-01',
-                                            'time' : '15-00',
-                                            'location' : '10.5221N, 76.2237E'
-                                        }
-                                    ]
+                    'date' : '2020-03-01',
+                    'time' : '15-00',
+                    'latitude' : '10.5206N',
+                    'longitude' : '76.2140E',
+                    'flag'  : '0'
                 },
                 {
-                    'user_email' : 'dddddd@china.com',
+                    'email' : 'dddddd@china.com',
                     'password'   :  'pass',
-                    'travel_history' :[
-                                        {
-                                           'date' : '2019-03-01',
-                                            'time' : '01-15',
-                                            'location' : '10.5276N, 76.2144E'
-                                        },
-                                        {
-                                            'date' : '2020-03-01',
-                                            'time' : '15-00',
-                                            'location' : '10.5221N, 76.2237E'
-                                        }
-                                    ]
+                    'date' : '2019-03-01',
+                    'time' : '01-15',
+                    'latitude' : '11.5206N',
+                    'longitude' : '72.2140E',
+                    'flag'  : '0'
+                },
+                {   
+                    'email' : 'dddddd@china.com',
+                    'password'   :  'pass',
+                    'date' : '2020-03-01',
+                    'time' : '15-00',
+                    'latitude' : '10.5206N',
+                    'longitude' : '76.2140E',
+                    'flag'  : '0'
                 }
-                
-                
-            ]
+                                    
+        ]
+
 def userdetails():
     return users

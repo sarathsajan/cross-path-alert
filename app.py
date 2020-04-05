@@ -50,39 +50,41 @@ def distance(lat1, lat2, lon1, lon2):
 def calc_prox(val1,ulat,ulon):
 	flag1=0 
 	flag2=0 
-	flag3=0 
-	for p in database:                                  #might need to change for sql                       
-		for q in range (0,len(p['travel_history'])):    #might need to change for sql
-			pdate=p['travel_history'][q]['date']                 
-			ptime=p['travel_history'][q]['time']                 
-			checkyear,checkmonth,checkdate=pdate.split('-')
-			checkhour,checkminutes=ptime.split('-')
-			val2 = datetime(int(checkyear),int(checkmonth),int(checkdate),int(checkhour),int(checkminutes),00) # if the person has no account
-			#print(val2)						
-			plat,plon=(p['travel_history'][q]['location']).split(',')
-			plat=float(plat[0:len(plat)-1])
-			plon=float(plon[0:len(plon)-1])
+	flag3=0
+	for p in database:    #might need to change for sql
+		pdate=p['date']                 
+		ptime=p['time']                 
+		checkyear,checkmonth,checkdate=pdate.split('-')
+		checkhour,checkminutes=ptime.split('-')
+		val2 = datetime(int(checkyear),int(checkmonth),int(checkdate),int(checkhour),int(checkminutes),00) # if the person has no account
+		#print(val2)						
+		plat=p['latitude']
+		plon=p['longitude']
+		plat=float(plat[0:len(plat)-1])
+		plon=float(plon[0:len(plon)-1])
 
-			difference = val1-val2
+		difference = val1-val2
 
-			time = difference.total_seconds()/60**2      #Time in Hours
-			dist = distance(ulat,plat,ulon,plon)
-			#print(dist)
-			#print(time)
+		time = difference.total_seconds()/60**2      #Time in Hours
+		dist = distance(ulat,plat,ulon,plon)
+		#print(dist)
+		#print(time)
 
-			if dist < .05 and time >= -2 and time <= 2:
-				flag1=1
-				break                                  #This is the extreme case so no need to check furthur
-			elif dist < .1 and time >= -4 and time <= 4:
-				flag2=2
-			elif dist < .25 and time >= -7 and time <= 7:
-				flag3=3
+		if dist < .05 and time >= -2 and time <= 2:
+			flag1=1
+		elif dist < .1 and time >= -4 and time <= 4:
+			flag2=2
+		elif dist < .25 and time >= -7 and time <= 7:
+			flag3=3
 
 	if flag1 == 1:
 		return('DANGER')
+		p['flag']='3' #logic not working but you have to change the flag of corresponding dict in sql 
 	elif flag2 == 2:
+		#change the corresponding dict flag to 2
 		return('ORANGE ALERT')
 	elif flag3 == 3:
+		#change the corresponding dict flag to 1
 		return('YELLOW ALERT')
 	else :
 		return('GREEN BUT DONT GO OUT')		
@@ -103,33 +105,32 @@ def for_user_with_no_account(useryear,usermonth,userdate,usertimehour,usertimemi
 ################################## FUNCTION FOR ACCOUNT USERS ########################################
 def for_user_with_account(useremail,password):
 
-	for y in userdata :                                                     #might need to chane for sql
-		if y['user_email'] == useremail and y['password'] == password :     #might need to chane for sql
-			for z in range (0,len(y['travel_history'])):
-
-				udate=y['travel_history'][z]['date']                 
-				utime=y['travel_history'][z]['time']                 
-				checkyear,checkmonth,checkdate=udate.split('-')
-				checkhour,checkminutes=utime.split('-')
-				val1 = datetime(int(checkyear),int(checkmonth),int(checkdate),int(checkhour),int(checkminutes),00) 
+	for z in userdata:                                                    
+		if z['email'] == useremail:      
+			udate=z['date']                 
+			utime=z['time']                 
+			checkyear,checkmonth,checkdate=udate.split('-')
+			checkhour,checkminutes=utime.split('-')
+			val1 = datetime(int(checkyear),int(checkmonth),int(checkdate),int(checkhour),int(checkminutes),00) 
 					
-				#thistime = datetime.now()              # TO POP DATA LARGER THAN 28 DAYS
-				#checkdiff = thistime-val1
-				#check = checkdiff.total_seconds()/60**2
-				#if check >= 672:
-				#	userdata.pop(y['travel_history'][z])
-				#print(val1)
+			#thistime = datetime.now()              # TO POP DATA LARGER THAN 28 DAYS
+			#checkdiff = thistime-val1
+			#check = checkdiff.total_seconds()/60**2
+			#if check >= 672:
+			#	userdata.pop(z)                      poping will be diff in sql
+			#	print(val1)
 					
-				ulat,ulon=(y['travel_history'][z]['location']).split(',')
-				ulat=float(ulat[0:len(ulat)-1])
-				ulon=float(ulon[0:len(ulon)-1])
-				print(calc_prox(val1,ulat,ulon))
+			ulat=z['latitude']
+			ulon=z['longitude']
+			ulat=float(ulat[0:len(ulat)-1])
+			ulon=float(ulon[0:len(ulon)-1])
+			print(calc_prox(val1,ulat,ulon))
 
 
 #####################################################################################################
 
-#for_user_with_account(useremail,password)		 #call for users with account
-for_user_with_no_account(useryear,usermonth,userdate,usertimehour,usertimeminutes,userlatitude,userlongtitude) # call for users with no account
+for_user_with_account(useremail,password)		 #call for users with account
+#for_user_with_no_account(useryear,usermonth,userdate,usertimehour,usertimeminutes,userlatitude,userlongtitude) # call for users with no account
 
 # if atleast once danger is coming, it should be flagged
 
