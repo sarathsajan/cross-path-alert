@@ -13,8 +13,7 @@ database = database()           #change this with the userdata from sql
 userdata = userdetails()        #and this with patients data from sql
 
 ######################################### temporary data for testing ################################
-useremail="dddddd@china.com"  #email from the login form 
-password='pass'               #password from the login form 
+useremail="dddddd@china.com"  #email 
 ####################################################################################################
 
 
@@ -73,7 +72,7 @@ def calc_prox(val1,ulat,ulon):
 
 	if flag1 == 1:
 		return('DANGER')
-		p['flag']='3' #logic not working but you have to change the flag of corresponding dict in sql 
+		p['flag']='3' #logic not working but you have to change the flag of corresponding entry in sql 
 	elif flag2 == 2:
 		#change the corresponding dict flag to 2
 		return('ORANGE ALERT')
@@ -97,7 +96,7 @@ def for_user_with_no_account(useryear,usermonth,userdate,usertimehour,usertimemi
 
 
 ################################## FUNCTION FOR ACCOUNT USERS ########################################
-def for_user_with_account(useremail,password):
+def for_user_with_account(useremail):
 
 	for z in userdata:                                                    
 		if z['email'] == useremail:      
@@ -123,7 +122,7 @@ def for_user_with_account(useremail,password):
 
 #####################################################################################################
 
-for_user_with_account(useremail,password)		 #call for users with account
+for_user_with_account(useremail)		 #call for users with account
 
 #################################################### PHASE 2 ########################################
 #for_user_with_no_account(useryear,usermonth,userdate,usertimehour,usertimeminutes,userlatitude,userlongtitude) # call for users with no account
