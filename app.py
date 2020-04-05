@@ -63,11 +63,11 @@ def calc_prox(val1,ulat,ulon):
 		#print(dist)
 		#print(time)
 
-		if dist < .05 and time >= -2 and time <= 2:
+		if dist < 0.1 and time >= -2 and time <= 2:
 			flag1=1
-		elif dist < .1 and time >= -4 and time <= 4:
+		elif dist < 0.25 and time >= -4 and time <= 4:
 			flag2=2
-		elif dist < .25 and time >= -7 and time <= 7:
+		elif dist < 0.5 and time >= -7 and time <= 7:
 			flag3=3
 
 	if flag1 == 1:
