@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #000000;
+  text-align: left;
+  padding: 8px;
+}
+
+
+</style>
+</head>
+<body>
+
+<h2>HTML Table</h2>
+<table>
+    <thead>
+    <tr>
+        <th>date</th>
+        <th>time</th>
+        <th>latitude</th>
+        <th>longtitude</th>
+    </tr>
+    </thead>
+    <tbody>
+        {% for row in output_data %}
+            {% if row['flag'] == '0'%}
+                <tr bgcolor="#05fa15">
+            {% elif row['flag'] == '1'  %}
+                <tr bgcolor="#f7f42a">
+            {% elif row['flag'] == '2'  %}
+                <tr bgcolor="#fa7f05">
+            {% elif row['flag'] == '3'  %}
+                <tr bgcolor="#FF0000">
+            {% endif %}  
+                    <td>{{row['date']}}</td>
+                    <td>{{row['time']}}</td>
+                    <td>{{row['latitude']}}</td>
+                    <td>{{row['longtitude']}}</td>
+                </tr>
+
+        {% endfor %}         
+    </tbody>
+</table>
+
+</body>
+</html>
