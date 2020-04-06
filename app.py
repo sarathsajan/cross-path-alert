@@ -72,15 +72,15 @@ def calc_prox(val1,ulat,ulon):
 
 	if flag1 == 1:
 		return('DANGER')
-		p['flag']='3' #logic not working but you have to change the flag of corresponding entry in sql 
+		p['flag']='4' #logic not working but you have to change the flag of corresponding entry in sql 
 	elif flag2 == 2:
-		#change the corresponding dict flag to 2
+		#change the corresponding dict flag to 3
 		return('ORANGE ALERT')
 	elif flag3 == 3:
-		#change the corresponding dict flag to 1
+		#change the corresponding dict flag to 2
 		return('YELLOW ALERT')
 	else :
-		return('GREEN BUT DONT GO OUT')		
+		return('GREEN BUT DONT GO OUT')	#flag = 1 for green	
 #####################################################################################################
 
 
