@@ -44,7 +44,7 @@ def calc_prox(val1,ulat,ulon):
 	flag1=0 
 	flag2=0 
 	flag3=0
-	for p in database:    #might need to change for sql
+	for p in database:    
 		pdate=p['date']                 
 		ptime=p['time']                 
 		checkyear,checkmonth,checkdate=pdate.split('-')
