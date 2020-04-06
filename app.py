@@ -9,7 +9,7 @@ from flask import Flask, render_template, redirect, url_for, request
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "cross-path-alert"
 
-database = database()           #change this with the userdata from sql
+database = database()           #change this with the usertravel history from sql
 userdata = userdetails()        #and this with patients data from sql
 
 ######################################### temporary data for testing ################################
@@ -99,7 +99,7 @@ def for_user_with_no_account(useryear,usermonth,userdate,usertimehour,usertimemi
 def for_user_with_account(useremail):
 
 	for z in userdata:                                                    
-		if z['email'] == useremail:      
+		if z['email'] == useremail:  #you might not need this part    
 			udate=z['date']                 
 			utime=z['time']                 
 			checkyear,checkmonth,checkdate=udate.split('-')
