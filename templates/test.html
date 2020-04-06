@@ -31,14 +31,16 @@ td, th {
     </thead>
     <tbody>
         {% for row in output_data %}
-            {% if row['flag'] == '0'%}
+            {% if row['flag'] == '1'%}
                 <tr bgcolor="#05fa15">
-            {% elif row['flag'] == '1'  %}
-                <tr bgcolor="#f7f42a">
             {% elif row['flag'] == '2'  %}
-                <tr bgcolor="#fa7f05">
+                <tr bgcolor="#f7f42a">
             {% elif row['flag'] == '3'  %}
+                <tr bgcolor="#fa7f05">
+            {% elif row['flag'] == '4'  %}
                 <tr bgcolor="#FF0000">
+            {% else                     %}
+                <tr bgcolor="#FFFFFF">
             {% endif %}  
                     <td>{{row['date']}}</td>
                     <td>{{row['time']}}</td>
