@@ -12,7 +12,7 @@ data = userdetails()
 
 @app.route('/test')
 def test():
-   return render_template('test.html', output_data = data)
+   return render_template('sarath.html', output_data = data)
 
 
 if __name__ == "__main__":
