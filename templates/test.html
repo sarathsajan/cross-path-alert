@@ -35,9 +35,6 @@ getJSON('https://cors-anywhere.herokuapp.com/https://covid19-kerala-api.herokuap
         console.error(err);
     } else {
         
-        var text = `Date: ${data.date}
-Time: ${data.time}
-Unix time: ${data.milliseconds_since_epoch}`
     
         console.log(data);
     }
