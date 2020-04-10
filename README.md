@@ -28,7 +28,11 @@ can update donotreply reminder emails like "do you have cough fever etc etc" for
 TO DO
 
 [x] collect patient data
+
 [x] design and set up otp login
+
 [x] user dashboard
+
 [x] database for user details
+
 [x] matching algorithm.
