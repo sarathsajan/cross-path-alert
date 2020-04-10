@@ -1,4 +1,4 @@
-## Cross Path Alert
+## AM I SAFE
 
 A webapp under development that can check if you have crossed path with an infected person.
 
@@ -27,4 +27,8 @@ can update donotreply reminder emails like "do you have cough fever etc etc" for
 
 TO DO
 
-collect patient data design and set up otp login and profile html and database for userdetails and his search history of travels matching algorithm.
+[x] collect patient data
+[x] design and set up otp login
+[x] user dashboard
+[x] database for user details
+[x] matching algorithm.
