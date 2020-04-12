@@ -11,18 +11,18 @@ from flask import Flask, render_template, redirect, url_for, request, flash, ses
 # A more formal packaging needed... with __init__.py as the development grows.
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = "cross-path-alert"
+app.config['SECRET_KEY'] = ""
 app.config.from_pyfile('config.cfg')
 
 # Configuring MySQL Database
 app.config['MYSQL_HOST'] = 'localhost'                                                  # localhost
-#app.config['MYSQL_HOST'] = 'amisafe.mysql.pythonanywhere-services.com'                  # amisafe
+#app.config['MYSQL_HOST'] = ''                  # amisafe
 app.config['MYSQL_USER'] = 'root'                                                       # localhost
-#app.config['MYSQL_USER'] = 'amisafe'                                                    # amisafe
+#app.config['MYSQL_USER'] = ''                                                    # amisafe
 app.config['MYSQL_PASSWORD'] = 'admin'                                                  # localhost
-#app.config['MYSQL_PASSWORD'] = '1h5Dsh6*K9'                                             # amisafe
+#app.config['MYSQL_PASSWORD'] = ''                                             # amisafe
 app.config['MYSQL_DB'] = 'cross_path_alert'                                             # localhost
-#app.config['MYSQL_DB'] = 'amisafe$amisafe'                                                      # amisafe
+#app.config['MYSQL_DB'] = ''                                                      # amisafe
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 #app.config['MYSQL_PORT'] = 3306                                                         # while not in localhost
 
@@ -65,7 +65,7 @@ def is_admin_logged_in(f):
     return wrap
 
 def send_confirmation_email(email):
-    token = s.dumps(email, salt="email-confirm")
+    token = s.dumps(email, salt="")
     msg = Message('Verification e-mail', sender='amisafe2help@gmail.com', recipients=[email])
     link = url_for('confirm_email', token=token, _external=True)
     msg.body = "This is your verification link. It expires in 15 minutes. Click on this verification link to verify your e-mail address \n\n {}".format(link)
@@ -180,7 +180,7 @@ def login():
 @app.route('/confirmEmail/<token>')
 def confirm_email(token):
     try:
-        email = s.loads(token, salt="email-confirm", max_age=900)
+        email = s.loads(token, salt="", max_age=900)
     except SignatureExpired:
         return "Token expired. Use the token within 15 minutes."
     
