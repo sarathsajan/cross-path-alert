@@ -1,5 +1,6 @@
 appdata = {
-    'salt-email-confirm' : 'email-confirm',
+    'salt-email-confirm' : '',
+    'salt-password-change' : '',
     'database-password' : 'admin'
 }
 

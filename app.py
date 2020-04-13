@@ -21,8 +21,8 @@ app.config['MYSQL_HOST'] = 'localhost'                                          
 #app.config['MYSQL_HOST'] = 'amisafe.mysql.pythonanywhere-services.com'                  # amisafe
 app.config['MYSQL_USER'] = 'root'                                                       # localhost
 #app.config['MYSQL_USER'] = 'amisafe'                                                    # amisafe
-app.config['MYSQL_PASSWORD'] = appdata['database-password']                                                  # localhost
-#app.config['MYSQL_PASSWORD'] = appdata['database-password']                                             # amisafe
+app.config['MYSQL_PASSWORD'] = appdata['database-password']                             # localhost
+#app.config['MYSQL_PASSWORD'] = appdata['database-password']                             # amisafe
 app.config['MYSQL_DB'] = 'cross_path_alert'                                             # localhost
 #app.config['MYSQL_DB'] = 'amisafe$amisafe'                                                      # amisafe
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
@@ -410,6 +410,64 @@ def adminlogin():
             return render_template("adminlogin.html", form=form, error=error)
         cur.close()
     return render_template("adminlogin.html", form=form)
+
+
+
+def password_change_email(email):
+    token = s.dumps(email, salt=appdata['salt-password-change'])
+    msg = Message('Password Modification', sender='amisafe2help@gmail.com', recipients=[email])
+    link = url_for('newpassword_prompt', token=token, _external=True)
+    msg.body = "This is your link for changing password . It expires in 15 minutes. Click on this link to change your AMISAFE account password \n\n {}".format(link)
+    mail.send(msg)
+
+
+class PasswordChangePrompt(Form):
+    email = StringField('Registered Email', [
+        validators.Length(min=6, max=50),
+        validators.Email(message="Enter a valid E-mail ID")
+    ])
+
+class NewPasswordPrompt(Form):
+    new_password = PasswordField('New Password', [                                          
+            validators.DataRequired(),
+            validators.Length(min=8),                                              
+            validators.EqualTo('confirm', message='Passwords do not match')         
+        ])                                                                          
+    confirm = PasswordField('Confirm New Password')
+
+@app.route("/changePassword/", methods=['POST', 'GET'])
+@app.route("/forgotPassword/", methods=['POST', 'GET'])
+def changepassword_prompt():
+    form = PasswordChangePrompt(request.form)
+    if request.method == 'POST' and form.validate():
+        email = form.email.data
+        password_change_email(email)
+        flash('A link for changing password has been sent to your e-mail. To change your password please click on it before it expires in 15 minutes.', 'success')
+        return redirect(url_for('login'))
+    return render_template('changepassword_prompt.html', form=form)
+
+
+
+
+@app.route('/changePassword/<token>', methods=['POST', 'GET'])
+def newpassword_prompt(token):
+    try:
+        email = s.loads(token, salt=appdata['salt-password-change'], max_age=900)
+    except:
+        return "Token expired. Use the token within 15 minutes."
+    form = NewPasswordPrompt(request.form)
+    if request.method == 'POST' and form.validate():
+        password = sha256_crypt.encrypt(str(form.new_password.data))
+        cur = mysql.connection.cursor()
+        cur.execute("UPDATE users SET password = %s WHERE email = %s", [password, email])
+        mysql.connection.commit()
+        cur.close()
+
+        flash("Your password has been changed", 'success')
+        return redirect(url_for('login'))
+    return render_template('newpassword_prompt.html', form=form)
+
+
 
 
 
