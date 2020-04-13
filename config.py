@@ -1,6 +1,6 @@
 appdata = {
-    'salt-email-confirm' : 'salt-for-decryption-here',
-    'database-password' : 'your-database-password-here'
+    'salt-email-confirm' : 'email-confirm',
+    'database-password' : 'admin'
 }
 
 def AppData():
