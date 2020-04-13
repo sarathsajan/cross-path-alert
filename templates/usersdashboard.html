@@ -1,0 +1,82 @@
+{% extends 'layout.html' %}
+{% block body %}
+    <h2>Your Dashboard</h2>
+    <div class="jumbotron text-left">
+        <h6>Name : {{ session.name }}</h6>
+        <h6>Email : {{ session.email }}</h6>
+        <br>
+        <p>
+            {% if flag == 1 %}
+                Our data suggests that you may have come in <strong style="color:#dc3545;">very close contact(within 100 meters)</strong> with a COVID-19 patient tested positive. Please contact the health officials as soon as possible.
+
+            {% elif flag == 2 %}
+                Our data suggests that you may have come in <strong style="color: #ff8c00;">close contact(within 250 meters)</strong> with a COVID-19 patient tested positive. Please contact the health officials as soon as possible.
+
+            {% elif flag == 3 %}
+                Our data suggests that you may have come in <strong style="color: #ffc107;">contact(within 500 meters)</strong> with a COVID-19 patient tested positive.
+
+            {% elif flag == 4 %}
+                Our data suggests that you have <strong style="color: #28a745;">not yet come in contact</strong> with a COVID-19 patient test positive.
+            {% endif %} For both yours and others continued safety, please stay indoors and take self-quarantine measures. For more info go to these links.
+            <br>
+            <ul>
+                <li class="list-item">
+                    <a href="https://www.mohfw.gov.in/pdf/coronvavirushelplinenumber.pdf">Helpline Numbers of States & Union Territories (UTs)</a>
+                </li>
+                <li class="list-item">
+                    <a href="https://www.mygov.in/covid-19/?cbps=1">MyGov India</a>
+                </li>
+                <li class="list-item">
+                    <a href="https://dhs.kerala.gov.in/">Directorate of Health Services Kerala</a> (for Keralites)
+                </li>
+            </ul>
+        </p>
+    </div>
+    <div class="container text-center">
+        <h3>Your Travel History</h3>
+        <br>
+        <button class="btn btn-sm" style="background-color:#dc3545; color:#ffffff;">Very High Risk</button>
+        <button class="btn btn-sm" style="background-color:#ff8c00;">High Risk</button>
+        <button class="btn btn-sm" style="background-color:#ffc107;">Moderate Risk</button>
+        <br><br>
+        <button class="btn btn-sm" style="background-color:#28a745; color:#ffffff;">Safe</button>
+        <br>
+        <br>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Latitude</th>
+                    <th>Longitude</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in user_data %}
+                    {% if i['danger_level'] == 1 %}
+                        <tr style="color: #ffffff;" bgcolor="#dc3545">
+                    {% elif i['danger_level'] == 2 %}
+                        <tr bgcolor="#ff8c00">
+                    {% elif i['danger_level'] == 3 %}
+                        <tr bgcolor="#ffc107">
+                    {% elif i['danger_level'] == 4 %}
+                        <tr style="color: #ffffff;" bgcolor="#28a745">
+                    {% endif %}
+                            <td>{{ i['date'] }}</td>
+                            <td>{{ i['time'] }}</td>
+                            <td>{{ i['latitude'] }}</td>
+                            <td>{{ i['longitude'] }}</td>
+                        </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <a href="{{ url_for('usersdashboard') }}"><button class="btn btn-primary">Reload to check against latest data</button></a>
+        <br>
+        <br>
+        <a href="{{ url_for('addUserData') }}"><button class="btn btn-primary">Add Your Travel History</button></a>
+    </div>
+    <br>
+    <br>
+{% endblock %}
