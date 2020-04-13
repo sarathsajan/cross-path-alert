@@ -1,0 +1,133 @@
+<style>
+    #hero
+    {
+        height: 100%;
+        background: url("{{ url_for('static', filename='corona_large.png') }}") center center;
+        background-size: cover;
+        position: relative;
+        padding: 0;
+    }
+
+    #hero:before
+    {
+        content: "";
+        background: rgba(56, 64, 70, 0.7);
+        position: absolute;
+        bottom: 0;
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+
+    #hero .container
+    {
+        z-index: 2;
+    }
+
+    #hero h1
+    {
+        margin: 0 0 10px 0;
+        font-size: 48px;
+        font-weight: 700;
+        line-height: 56px;
+        color: #fff;
+    }
+
+    #hero h1 span
+    {
+        border-bottom: 4px solid #3498db;
+    }
+
+    #hero h2
+    {
+        color: rgba(255, 255, 255, 0.8);
+        margin-bottom: 30px;
+        font-size: 24px;
+    }
+
+    #hero .btn-get-started
+    {
+        font-family: "Poppins", sans-serif;
+        font-weight: 400;
+        font-size: 13px;
+        letter-spacing: 2px;
+        display: inline-block;
+        padding: 12px 28px;
+        border-radius: 4px;
+        transition: ease-in-out 0.3s;
+        color: #fff;
+        background: #3498db;
+        text-transform: uppercase;
+    }
+
+    #hero .btn-get-started:hover
+    {
+        background: #4ea5e0;
+    }
+
+    @media (max-width: 992px)
+    {
+        #hero
+        {
+            height: calc(100vh - 70px);
+        }
+    }
+
+    @media (max-width: 768px)
+    {
+        #hero h1
+        {
+            font-size: 30px;
+            line-height: 36px;
+        }
+
+        #hero h2
+        {
+            font-size: 18px;
+            line-height: 24px;
+            margin-bottom: 30px;
+        }
+    }
+</style>
+
+{% extends 'layout.html' %}
+{% block body %}
+    <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
+        <div class="container text-center text-md-left" data-aos="fade-up">
+            <h1>Welcome to <span>AMISAFE</span></h1>
+            <h2>Using this website, you can check weather you have crossed paths with a COVID-19 patient</h2>
+            <a href="/login"><button class="btn btn-get-started">Get Started</button></a>
+            <br>
+            <br>
+            <a href="/quickCheck"><button class="btn btn-outline-warning">Quick Check</button></a>
+        </div>
+    </section>
+    <br>
+    <div class="container">
+        <button class="btn btn-success">Number of Registered Users : {{ reg_users }}</button>
+    </div>
+
+    <div class="container jumbotron text-center">
+        How It Works1
+    </div>
+    <div class="container jumbotron text-center">
+        How It Works2
+    </div>
+    <div class="container jumbotron text-center">
+        How It Works3
+    </div>
+    <div class="container jumbotron text-center">
+        How It Works4
+    </div>
+    <div class="container jumbotron text-center">
+        How It Works5
+    </div>
+    <div class="container jumbotron text-center">
+        How It Works6
+    </div>
+    <div class="container jumbotron text-center">
+        How It Works7
+    </div>
+    
+
+{% endblock %}
