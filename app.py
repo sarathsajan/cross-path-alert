@@ -14,7 +14,7 @@ from flask import Flask, render_template, redirect, url_for, request, flash, ses
 appdata = AppData()
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = "cross-path-alert"
+app.config['SECRET_KEY'] = appdate['app-secret-key']
 app.config.from_pyfile('config.cfg')
 
 # Configuring MySQL Database
