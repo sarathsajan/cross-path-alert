@@ -1,3 +1,4 @@
+import os
 from config import AppData
 import datetime
 from math import radians, cos, sin, asin, sqrt
@@ -13,7 +14,8 @@ from flask import Flask, render_template, redirect, url_for, request, flash, ses
 appdata = AppData()
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = appdata['app-secret-key']
+
+app.config['SECRET_KEY'] = appdate['app-secret-key']
 app.config.from_pyfile('config.cfg')
 
 # Configuring MySQL Database
@@ -39,6 +41,13 @@ def home():
     reg_users = cur.execute("SELECT * FROM users")
     cur.close()
     return render_template('home.html', reg_users=reg_users)
+
+@app.route('/sources')
+def sources():
+    imgs = []
+    for img in os.listdir('static/sources/'):
+        imgs.append(img)
+    return render_template('sources.html', images=imgs)
 
 
 
