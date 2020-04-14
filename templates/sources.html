@@ -1,6 +1,9 @@
 {% extends 'layout.html' %}
 {% block body %}
+    <h2>Data Source</h2>
 	{% for image in images %}
-		<img width="inherit" src="static/sources/{{ image }}">
+        <br>
+		<img style="width: inherit; border: 10px solid; border-color: #dc3545;" src="static/sources/{{ image }}">
+        <br>
 	{% endfor %}
 {% endblock %}
