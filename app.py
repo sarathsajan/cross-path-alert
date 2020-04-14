@@ -15,7 +15,7 @@ appdata = AppData()
 
 app = Flask(__name__)
 
-app.config['SECRET_KEY'] = appdate['app-secret-key']
+app.config['SECRET_KEY'] = appdata['app-secret-key']
 app.config.from_pyfile('config.cfg')
 
 # Configuring MySQL Database
