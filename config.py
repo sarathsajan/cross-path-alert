@@ -1,8 +1,8 @@
 appdata = {
-    'app-secret-key' : 'app-secret-key',
-    'salt-password-change' : 'password-change',
-    'salt-email-confirm' : 'email-confirm',
-    'database-password' : 'admin'
+    'salt-email-confirm' : #'email-confirm',
+    'salt-password-change' : #'password-change',
+    'app-secret-key' : #'cross-path-alert',
+    'database-password' : #'admin'
 }
 
 def AppData():
