@@ -1,3 +1,4 @@
+import os
 from config import AppData
 import datetime
 from math import radians, cos, sin, asin, sqrt
@@ -39,6 +40,13 @@ def home():
     reg_users = cur.execute("SELECT * FROM users")
     cur.close()
     return render_template('home.html', reg_users=reg_users)
+
+@app.route('/sources')
+def sources():
+    imgs = []
+    for img in os.listdir('static/sources/'):
+        imgs.append(img)
+    return render_template('sources.html', images=imgs)
 
 
 

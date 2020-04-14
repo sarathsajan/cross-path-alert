@@ -1,0 +1,6 @@
+{% extends 'layout.html' %}
+{% block body %}
+	{% for image in images %}
+		<img width="inherit" src="static/sources/{{ image }}">
+	{% endfor %}
+{% endblock %}
