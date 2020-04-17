@@ -66,6 +66,8 @@
                             <td>{{ i['time'] }}</td>
                             <td>{{ i['latitude'] }}</td>
                             <td>{{ i['longitude'] }}</td>
+                            <td>{{ i['id'] }}</td>
+                            <td style="color: #ffffff;" bgcolor="#f5f5f5"><a href="{{ url_for('deleteUserData', id=i['id']) }}" class="btn btn-danger pull-right">Delete</a></td>
                         </tr>
                 {% endfor %}
             </tbody>

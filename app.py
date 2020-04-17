@@ -349,7 +349,20 @@ def usersdashboard():
 
     return render_template('usersdashboard.html', user_data=modified_user_data, flag=risk_flag)
 
+@app.route("/usersdashboard/deleteData/<id>", methods=['POST', 'GET'])
+@is_logged_in
+def deleteUserData(id):
+    cur = mysql.connection.cursor()
+    result = cur.execute("DELETE FROM users_travel_history WHERE id = %s AND email = %s", [id, session['email']])
+    mysql.connection.commit()
+    cur.close()
+    print 'result-->',result
+    if result > 0:
+        flash("One travel entry deleted", "danger")
+    else:
+        flash("Bad input. Well on a side note, you sneaky bastard we might need your help.", "danger")
 
+    return redirect(url_for('usersdashboard'))
 
 @app.route("/patientsdashboard/addData/", methods=['POST', 'GET'])
 @is_admin_logged_in
