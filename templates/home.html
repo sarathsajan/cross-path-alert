@@ -112,9 +112,9 @@
         <br>
         <button class="btn btn-outline-success"> STEP 1 </button><p>Sign up and Login to your AMISAFE account.</p>
         <br>
-        <button class="btn btn-outline-success"> STEP 2 </button><p>Once you are inside the user's dashboard, enter your travel history from your memory. The data that we collect are the 'time-of-visit', 'date-of-visit', 'place-of-visit'. The more accurate the data you give the better results can be output. We respect your privacy, so we only use the data given by you. We store this data for only 30 days, after which it is removed.[feature pending]</p>
+        <button class="btn btn-outline-success"> STEP 2 </button><p>Once you are inside the user's dashboard, enter your travel history from your memory. The data that we collect are the 'time-of-visit', 'date-of-visit', 'place-of-visit'. The more accurate the data you give, the better the results will be. We respect your privacy, so we only use the data given by you. We store this data for only 30 days, after which it is removed.[feature pending]</p>
         <br>
-        <button class="btn btn-outline-success"> STEP 3 </button><p>We have a separate database containing the travel history of COVID-19 positive-tested patients, available through public sources like newspaper, television, social media posts(of authorities). We collect these data manually and enter into our database. The data is as accurte as provided by these <a href="{{url_for('sources')}}"> sources</a>.</p>
+        <button class="btn btn-outline-success"> STEP 3 </button><p>We have a separate database containing the travel history of COVID-19 positive-tested patients, collected through public sources like newspaper, television, social media posts(of authorities). We collect these data manually and enter into our database. The data is as accurate as provided by these <a href="{{url_for('sources')}}"> sources</a>.</p>
         <br>
         <button class="btn btn-outline-success"> STEP 4 </button><p>Using the your travel history data provided by you, we cross check it with our patient's travel history database. And based on the date, time and location we determine a risk-value for each of your 'place-of-visit', which can be seen in the user's dashboard.</p>
         <br>
@@ -131,6 +131,7 @@
         <button class="btn btn-outline-success"> STEP 7 </button><p>We request you stay indoors for both yours and everybody's continued safety. Follow social-distancing and self-isolation to flatten the curve. But if you went outside for some reason and wants to know whether you could have crossed paths with a possible COVID-19 patient then all you have to do is login to your account and input your data [back to STEP 1]</p>
     </div>
     <div class="jumbotron text-center">
-        <button class="btn btn-warning">Warning</button> The predictions made are as accurate as the date provided in the <a href="{{url_for('sources')}}">sources</a>. So we advise you not to trust the site blindly.
+        <button class="btn btn-warning">Warning</button>
+        The predictions made are as accurate as the date provided in the <a href="{{url_for('sources')}}">sources</a>. So we advise you not to trust the site blindly.
     </div>
 {% endblock %}
